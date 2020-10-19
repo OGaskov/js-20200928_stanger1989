@@ -5,12 +5,12 @@
  * @returns {string[]}
  */
 export function sortStrings(arr, param = 'asc') {
-  const collator=new Intl.Collator(['ru','en-GB','en-US'], {caseFirst: 'upper'})
-  if (param==='asc') {
-    return [...arr].sort((a,b)=>{return collator.compare(a,b)})
-  } else if (param==='desc') {
-    return [...arr].sort((a,b)=>{return collator.compare(b,a)})
+  const collator = new Intl.Collator(['ru', 'en-GB', 'en-US'], {caseFirst: 'upper'});
+  if (param === 'asc' || param === 'desc') {
+    return [...arr].sort((a, b)=>{
+      return param === 'asc' ? collator.compare(a, b) : collator.compare(b, a);
+    });
   }
-  return arr
+  return arr;
 }
 
